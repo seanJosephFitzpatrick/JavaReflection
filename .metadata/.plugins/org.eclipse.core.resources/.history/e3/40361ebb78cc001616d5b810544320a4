@@ -2,7 +2,6 @@ package ie.gmit.sw;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import java.util.List;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -39,10 +38,6 @@ public class AppWindow {
         btnChooseFile.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnChooseFile.setMinimumSize(new java.awt.Dimension(90, 30));
 		btnChooseFile.addActionListener(new java.awt.event.ActionListener() {
-			
-			//Create instance of Loader in AppWindow
-			Loader load = new Loader();
-			
             public void actionPerformed(ActionEvent evt) {
         		JFileChooser fc = new JFileChooser("./");
         		int returnVal = fc.showOpenDialog(frame);
@@ -51,14 +46,6 @@ public class AppWindow {
                 	String name = file.getAbsolutePath(); 
                 	txtFileName.setText(name);
                 	System.out.println("You selected the following file: " + name);
-                	
-                	/*
-                	 * Pass name in getJarContents that hold the location of the selected .jar file.
-                	 * Load classes into List.
-                	 */
-                	List<?> myList = load.getJarContents(name);
-
-        			System.out.println(myList);
             	}
 			}
         });

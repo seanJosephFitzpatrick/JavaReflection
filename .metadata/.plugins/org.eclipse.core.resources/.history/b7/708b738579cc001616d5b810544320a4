@@ -40,7 +40,6 @@ public class AppWindow {
         btnChooseFile.setMinimumSize(new java.awt.Dimension(90, 30));
 		btnChooseFile.addActionListener(new java.awt.event.ActionListener() {
 			
-			//Create instance of Loader in AppWindow
 			Loader load = new Loader();
 			
             public void actionPerformed(ActionEvent evt) {
@@ -52,10 +51,6 @@ public class AppWindow {
                 	txtFileName.setText(name);
                 	System.out.println("You selected the following file: " + name);
                 	
-                	/*
-                	 * Pass name in getJarContents that hold the location of the selected .jar file.
-                	 * Load classes into List.
-                	 */
                 	List<?> myList = load.getJarContents(name);
 
         			System.out.println(myList);
