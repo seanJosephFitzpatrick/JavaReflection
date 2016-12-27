@@ -1,0 +1,20 @@
+package ie.gmit.sw;
+
+import java.io.*;
+import java.util.*;
+
+public class Runner {
+	
+	
+	
+	public static void main(String[] args) throws IOException {
+		
+		Loader load = new Loader();
+		
+		List<?> myList = load.getJarContents("C:/Users/Sean Fitzpatrick/Downloads/ie/gmit/sw/string-service.jar");
+
+			System.out.println(myList);
+					
+	}
+
+}
