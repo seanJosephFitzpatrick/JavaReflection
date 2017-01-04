@@ -2,6 +2,8 @@ package ie.gmit.sw;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.awt.*;
@@ -10,6 +12,9 @@ import java.io.File;
 
 public class AppWindow {
 	private JFrame frame;
+	private String name;
+	private String className;
+	private Class c;
 	
 	public AppWindow(){
 		//Create a window for the application
@@ -21,7 +26,7 @@ public class AppWindow {
 		
         //The file panel will contain the file chooser
         JPanel top = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        top.setBorder(new javax.swing.border.TitledBorder("Select File to Encode"));
+        top.setBorder(new javax.swing.border.TitledBorder("Select .jar File"));
         top.setPreferredSize(new java.awt.Dimension(500, 100));
         top.setMaximumSize(new java.awt.Dimension(500, 100));
         top.setMinimumSize(new java.awt.Dimension(500, 100));
@@ -33,45 +38,50 @@ public class AppWindow {
 		txtFileName.setMinimumSize(new java.awt.Dimension(100, 30));
 		
 		JButton btnChooseFile = new JButton("Browse...");
-		btnChooseFile.setToolTipText("Select File to Encode");
+		btnChooseFile.setToolTipText("Select .jar File");
         btnChooseFile.setPreferredSize(new java.awt.Dimension(90, 30));
         btnChooseFile.setMaximumSize(new java.awt.Dimension(90, 30));
         btnChooseFile.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnChooseFile.setMinimumSize(new java.awt.Dimension(90, 30));
 		btnChooseFile.addActionListener(new java.awt.event.ActionListener() {
 			
-			//Create instance of Loader in AppWindow
-			Loader load = new Loader();
-			
             public void actionPerformed(ActionEvent evt) {
         		JFileChooser fc = new JFileChooser("./");
         		int returnVal = fc.showOpenDialog(frame);
             	if (returnVal == JFileChooser.APPROVE_OPTION) {
                 	File file = fc.getSelectedFile().getAbsoluteFile();
-                	String name = file.getAbsolutePath(); 
+                	name = file.getAbsolutePath(); 
                 	txtFileName.setText(name);
                 	System.out.println("You selected the following file: " + name);
                 	
-                	/*
-                	 * Pass name in getJarContents that hold the location of the selected .jar file.
-                	 * Load classes into List.
-                	 */
-                	List<?> myList = load.getJarContents(name);
-
-        			System.out.println(myList);
+                	
             	}
 			}
         });
 		
-		JButton btnOther = new JButton("Do Something");
-		btnOther.setToolTipText("Do Something");
+		JButton btnOther = new JButton("Process .jar");
+		btnOther.setToolTipText("Process .jar");
 		btnOther.setPreferredSize(new java.awt.Dimension(150, 30));
 		btnOther.setMaximumSize(new java.awt.Dimension(150, 30));
 		btnOther.setMargin(new java.awt.Insets(2, 2, 2, 2));
 		btnOther.setMinimumSize(new java.awt.Dimension(150, 30));
 		btnOther.addActionListener(new java.awt.event.ActionListener() {
+			
+			//Create instance of Loader in AppWindow
+			Loader load = new Loader();
+			
             public void actionPerformed(ActionEvent evt) {
             	System.out.println("Do Something");
+            	
+            	/*
+            	 * Pass name in getJarContents that hold the location of the selected .jar file.
+            	 * Load classes into List.
+            	 */
+            	
+            	List<Class> myList = null;
+				myList = load.getJarContents(name);
+            	//System.out.println("Please specify a class name.");
+    			//System.out.println(myList);
             	
 			}
         });
