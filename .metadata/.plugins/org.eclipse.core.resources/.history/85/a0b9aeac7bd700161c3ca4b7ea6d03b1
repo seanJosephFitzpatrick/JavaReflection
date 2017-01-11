@@ -1,0 +1,48 @@
+package ie.gmit.sw;
+
+import java.util.Iterator;
+import java.util.Map;
+
+/**
+ * Created by Sean on 08/01/2017.
+ */
+
+/**
+ * This class is responible for retiving the data need for the tables in the GUI
+ */
+public class Data {
+
+    //private ClassMap map;
+    public Data(ClassMap map){
+        getData(map);
+    }
+    public Data(){
+        super();
+    }
+
+    /**
+     * Takes a map as a paramater and returns a 2 dimensional Object array with
+     * the contents of the map values. Returned in the format required for the table of a swing component.
+     * @param map
+     * @return Object[][]
+     */
+    public Object[][] getData(ClassMap map) {
+        int i = 0;
+        Object[][] data = new Object[map.size()][4];
+
+        for (Measurement myMeas: map.values()){
+
+            data[i][0] = myMeas.getClassName();
+            data[i][1] = myMeas.getConstructors();
+            data[i][2] = myMeas.getFields();
+            data[i][3] = myMeas.getInterface();
+
+            System.out.println(data);
+            i++;
+        }
+
+        return data;
+    }
+
+
+}

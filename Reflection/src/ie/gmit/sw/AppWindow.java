@@ -2,10 +2,6 @@ package ie.gmit.sw;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -13,8 +9,7 @@ import java.io.File;
 public class AppWindow {
 	private JFrame frame;
 	private String name;
-	private String className;
-	private Class c;
+	//private String className;
 	
 	public AppWindow(){
 		//Create a window for the application
@@ -68,7 +63,7 @@ public class AppWindow {
 		btnOther.addActionListener(new java.awt.event.ActionListener() {
 			
 			//Create instance of Loader in AppWindow
-			Loader load = new Loader();
+			JarLoader jl = new JarLoader();
 			
             public void actionPerformed(ActionEvent evt) {
             	System.out.println("Do Something");
@@ -78,10 +73,14 @@ public class AppWindow {
             	 * Load classes into List.
             	 */
             	
-            	List<Class> myList = null;
-				myList = load.getJarContents(name);
-            	//System.out.println("Please specify a class name.");
+            	
+				@SuppressWarnings("unused")
+				ClassList myList;
+				myList = jl.getJarContents(name);
+				System.out.println("Please specify a class name.");
     			//System.out.println(myList);
+				
+				
             	
 			}
         });
@@ -114,7 +113,8 @@ public class AppWindow {
         
         JButton btnDialog = new JButton("Show Dialog"); //Create Quit button
         btnDialog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+            @SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent evt) {
             	AppSummary as =  new AppSummary(frame, true);
             	as.show();
 			}

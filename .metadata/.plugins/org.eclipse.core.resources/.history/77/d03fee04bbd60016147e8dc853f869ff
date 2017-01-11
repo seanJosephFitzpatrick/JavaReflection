@@ -1,0 +1,70 @@
+package ie.gmit.sw;
+
+import java.util.List;
+
+
+public class Afferent{
+	
+	private ClassList ClassListDependencies;
+	private Class<?> cls;
+	private List<Efferent> listCE; 
+
+
+	public Afferent(Class<?> class1, List<Efferent> listCE)
+	{
+		
+		this.cls = class1;
+		this.listCE = listCE;
+		
+		calculate();
+	}
+	
+	
+	public void calculate()
+	{
+		
+		this.ClassListDependencies = new ClassList();
+		
+		for (int i = 0; i < listCE.size(); i++)
+		{
+			ClassList ClassListD = listCE.get(i).getJarSetDependencies();
+			
+			if(ClassListD.size() > 0)
+			{
+				
+				for (int j = 0; j < ClassListD.size(); j++)
+				{
+					
+					if(cls.equals(ClassListD.get(j)))
+					{
+						
+						this.ClassListDependencies.add(listCE.get(i).getCls());
+						
+					}
+					
+				}
+				
+			}
+		}
+		
+	}
+
+	
+	public ClassList getJarsetDependencies() 
+	{
+		return ClassListDependencies;
+	}
+
+
+	public Class<?> getCls()
+	{
+		return this.cls;
+	}
+	
+	
+	public double getResult() 
+	{
+		return (double)this.ClassListDependencies.size();
+	}
+
+}

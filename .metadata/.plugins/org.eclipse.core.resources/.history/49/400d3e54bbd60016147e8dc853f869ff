@@ -1,0 +1,290 @@
+package ie.gmit.sw;
+
+import java.lang.reflect.*;
+
+public class ReflectionExample {
+   
+   private Class c;
+   
+   public static void main(String args[]){
+        if (args.length == 0) {
+            System.out.println("Please specify a class name.");
+            System.exit(1);
+        }
+        try {
+            Class queryClass = Class.forName(args[0]);
+            new ReflectionExample(queryClass);
+        } catch (ClassNotFoundException ee) {
+            System.out.println("Couldn't find class '"+ args[0] + "'");
+            System.exit(1);
+        }
+   }
+
+   public ReflectionExample(Class c){
+      super();
+      this.c = c;
+      
+      System.out.println("aClass.getName() = " + c.getName());
+      printConstructors();
+      printFields();
+      printMethods();
+      createArray();
+   }
+
+   public void printConstructors(){
+      Constructor ctorlist[] = c.getDeclaredConstructors();
+      System.out.println("--------------" + ctorlist.length + " Constructors --------------");
+      for (int i = 0; i < ctorlist.length; i++) {
+         Constructor ct = ctorlist[i];
+         System.out.println("\tname  = " + ct.getName());
+         System.out.println("\tdecl class = " + ct.getDeclaringClass());
+
+         Class pvec[] = ct.getParameterTypes();
+         for (int j = 0; j < pvec.length; j++){
+            System.out.println("\tparam #" + j + " " + pvec[j]);
+         }
+
+         Class evec[] = ct.getExceptionTypes();
+         for (int j = 0; j < evec.length; j++){
+            System.out.println("\texc #" + j + " " + evec[j]);
+         }
+         System.out.println("\t-----");
+      }
+   }
+
+   public void printFields(){
+      Field fieldlist[] = c.getDeclaredFields();
+      for (int i = 0; i < fieldlist.length; i++) {
+         Field fld = fieldlist[i];
+         System.out.println("\tname = " + fld.getName());
+         System.out.println("\tdecl class = " + fld.getDeclaringClass());
+         System.out.println("\ttype = " + fld.getType());
+         int mod = fld.getModifiers();
+         System.out.println("\tmodifiers = " + Modifier.toString(mod));
+         System.out.println("-----");
+      }
+   }
+
+   public void printMethods(){
+      Method methlist[] = c.getDeclaredMethods();
+      System.out.println("--------------" + methlist.length + " Methods --------------");
+      for (int i = 0; i < methlist.length;i++) {
+      	Method m = methlist[i];
+      	System.out.println("\tname = " + m.getName());
+      	System.out.println("\tdecl class = " + m.getDeclaringClass());
+      	Class pvec[] = m.getParameterTypes();
+      	for (int j = 0; j < pvec.length; j++){
+         		System.out.println("\tparam #" + j + " " + pvec[j]);
+    	}
+      	Class evec[] = m.getExceptionTypes();
+      	for (int j = 0; j < evec.length; j++){
+         		System.out.println("\texc #" + j + " " + evec[j]);
+      	}
+      	System.out.println("\treturn type = " + m.getReturnType());
+      	System.out.println("\t-----");
+      }
+   }
+   
+   /////////////////////////////////////////////////////////////////////////////////////////
+
+	// Get interfaces
+	public ClassList getInterface(Class<?> cls) 
+	{
+		
+		ClassList inFace = new ClassList();
+		
+		Class<?> inFaceArray[] = cls.getInterfaces();
+		
+		for(Class<?> c : inFaceArray)
+		{
+			inFace.add(c);
+		}
+		
+		return inFace;
+		
+	}// End getInterface
+
+	// Get super class
+	public Class<?> getSuperClass(Class<?> cls, ClassList jarSetClasses) 
+	{
+		
+		if(!cls.isInterface())
+		{
+			
+			Class<?> class1 = cls.getSuperclass();
+			
+			for (int i = 0; i < jarSetClasses.size(); i++) 
+			{
+				if(class1.getName().equals(jarSetClasses.get(i).getName()))
+				{
+					
+					return class1;
+					
+				}
+				
+			}// End for
+			
+		}
+		
+		return null;
+		
+	}// End getSuperClass
+	
+	// Get fields
+	public ClassList getFields(Class<?> cls, ClassList jarSetClasses)
+	{
+		ClassList jarsetFields = new ClassList();
+		
+		Field[] fields = cls.getDeclaredFields();
+		
+		for(Field f : fields)
+		{
+			
+			Type type = f.getType();
+			
+			for (int i = 0; i < jarSetClasses.size(); i++)
+			{
+				
+				if(type.getTypeName().equals(jarSetClasses.get(i).getName()))
+				{
+					
+					Class<?> cField = jarSetClasses.get(i);
+					
+					jarsetFields.add(cField);
+					
+				}
+				
+			}// End inner for
+			
+		}// End outer for
+		
+		return jarsetFields;
+		
+	}// End getFields
+
+	// Get parameters from constructors
+	public ClassList getConstructorParams(Class<?> cls, ClassList jarSetClasses)
+	{
+		
+		ClassList jarsetParams = new ClassList();
+		
+		Constructor<?>[] cons = cls.getDeclaredConstructors();
+		
+		if(cons.length > 0)
+		{
+			
+			for (Constructor<?> c : cons)
+			{
+				
+				Class<?>[] class1 = c.getParameterTypes();
+				
+				if(class1.length > 0)
+				{
+					
+					for (Class<?> item : class1)
+					{
+						
+						if(jarSetClasses.contains(item))
+						{
+							
+							jarsetParams.add(item);
+							
+						}
+						
+					}// End inner for
+					
+				}
+				
+			}// End outer for
+			
+		}
+		
+		return jarsetParams;
+		
+	}// End getConstructorParams
+	
+	// Get parameters from methods
+	public ClassList getMethodParams(Class<?> cls, ClassList jarSetClasses) 
+	{
+		
+		ClassList jarsetParams = new ClassList();
+		
+		Method[] method = cls.getDeclaredMethods();
+		
+		if(method.length > 0)
+		{
+			
+			for (Method m : method)
+			{
+				
+				Class<?>[] class1 = m.getParameterTypes();
+				
+				if(class1.length > 0)
+				{
+					
+					for (Class<?> item : class1)
+					{
+						
+						if(jarSetClasses.contains(item))
+						{
+							
+							jarsetParams.add(item);
+							
+						}
+						
+					}// End inner for
+					
+				}
+				
+			}// End outer for
+			
+		}
+		
+		return jarsetParams;
+		
+	}// End getMethodParams
+
+	// Get return type of methods
+	public ClassList getMethodReturn(Class<?> cls, ClassList jarSetClasses)
+	{
+		
+		ClassList jarsetReturn = new ClassList();
+		
+		Method[] method = cls.getDeclaredMethods();
+		
+		if(method.length > 0)
+		{
+			
+			for (Method m : method)
+			{
+				
+				Class<?> class1 = m.getReturnType();
+				
+				if(jarSetClasses.contains(class1))
+				{
+					
+					jarsetReturn.add(class1);
+					
+				}
+				
+			}// End for
+			
+		}
+		
+		return jarsetReturn;
+		
+}// End getMethodReturn
+   ///////////////////////////////////////////////////////////////////////////////////////////
+
+   public void createArray(){
+      try {
+         Class cls = Class.forName("java.lang.String");
+         Object arr = Array.newInstance(cls, 10);
+         Array.set(arr, 5, "Msc OO");
+         String s = (String)Array.get(arr, 5);
+         System.out.println(s);
+      }catch (Throwable e) {
+         System.err.println(e);
+      }
+   }
+}

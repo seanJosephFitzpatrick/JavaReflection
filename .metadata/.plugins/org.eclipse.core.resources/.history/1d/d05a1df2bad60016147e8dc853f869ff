@@ -1,0 +1,42 @@
+package ie.gmit.sw;
+
+import java.util.LinkedList;
+import java.util.List;
+
+
+public class ClassList
+{
+	
+	List<Class<?>> myList = new LinkedList<Class<?>>();
+
+
+	public int size()
+	{
+		return myList.size();
+	}
+
+
+	public boolean isEmpty()
+	{
+		return myList.isEmpty();
+	}
+
+	
+	public boolean contains(Class<?> cls) 
+	{
+		return myList.contains(cls);
+	}
+
+	
+	public boolean add(Class<?> e) 
+	{
+		return myList.add(e);
+	}
+
+
+	public Class<?> get(int index)
+	{
+		return myList.get(index);
+	}
+	
+}

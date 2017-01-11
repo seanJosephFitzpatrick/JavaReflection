@@ -1,0 +1,186 @@
+package ie.gmit.sw;
+
+import java.lang.reflect.*;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * @author Sean Fitzpatrick
+ *
+ */
+/**
+ * @author Sean Fitzpatrick
+ *
+ */
+/**
+ * @author Sean Fitzpatrick
+ *
+ */
+public class ReflectionExample {
+   
+   @SuppressWarnings("rawtypes")
+   private Class c;
+   //private int afferent = 0;
+   //private int efferent = 0;
+   @SuppressWarnings("rawtypes")
+   private List classList;
+    
+   /*
+   public static void main(String args[]){
+        if (args.length == 0) {
+            System.out.println("Please specify a class name.");
+            System.exit(1);
+        }
+        try {
+            Class queryClass = Class.forName(args[0]);
+            new ReflectionExample(queryClass);
+        } catch (ClassNotFoundException ee) {
+            System.out.println("Couldn't find class '"+ args[0] + "'");
+            System.exit(1);
+        }
+   }*/
+   
+
+   public ReflectionExample(@SuppressWarnings("rawtypes") Class c){
+      super();
+      this.c = c;
+      
+     classList = new LinkedList<Object>();
+     
+      
+      System.out.println("aClass.getName() = " + c.getName());
+      
+      //printInterfaces();
+      printConstructors();
+      printFields();
+      printMethods();
+      getInterface(c);
+      createArray();
+   }
+   
+
+	/**
+	 * Methods to get interfaces
+	 */
+   public void printInterfaces(){
+	      
+	   @SuppressWarnings("rawtypes")
+	   Class interfaces[] = c.getInterfaces();
+	   System.out.println("--------------" + interfaces.length + " Interfaces --------------");
+	      for (int i = 0; i < interfaces.length; i++) {  
+	         @SuppressWarnings("rawtypes")
+			Class inter = interfaces[i];
+	       //  String className = (String) classList.get(classList.size());
+	         for(int j = 0; j < classList.size(); j++){
+
+	                //if the interface name is same as inter.getName() then increment afferent
+	              /*  if(className == inter.getName()){
+	                    afferent ++;
+	                    System.out.println(afferent + "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+	                }*/
+	         }
+	         
+	         System.out.println("\tname = " + inter.getName());
+	         int mod = inter.getModifiers();
+	         System.out.println("\tmodifiers = " + Modifier.toString(mod));
+	         System.out.println("-----");
+
+	      }
+	   }
+   
+   public ClassList getInterface(Class<?> cls) 
+	{
+	   
+	   ClassList classList = new ClassList();
+		
+		Class<?> inter[] = cls.getInterfaces();
+		
+		for(Class<?> c : inter)
+		{
+			classList.add(c);
+			System.out.println(c);
+		}
+		
+		return classList;	
+	}
+   
+   
+  
+   public Object[] printConstructors(){
+      @SuppressWarnings("rawtypes")
+	Constructor ctorlist[] = c.getDeclaredConstructors();
+      System.out.println("--------------" + ctorlist.length + " Constructors --------------");
+      for (int i = 0; i < ctorlist.length; i++) {
+        @SuppressWarnings("rawtypes")
+		Constructor ct = ctorlist[i];
+         System.out.println("\tname  = " + ct.getName());
+         System.out.println("\tdecl class = " + ct.getDeclaringClass());
+
+         @SuppressWarnings("rawtypes")
+		Class pvec[] = ct.getParameterTypes();
+         for (int j = 0; j < pvec.length; j++){
+            System.out.println("\tparam #" + j + " " + pvec[j]);
+         }
+
+         @SuppressWarnings("rawtypes")
+		Class evec[] = ct.getExceptionTypes();
+         for (int j = 0; j < evec.length; j++){
+            System.out.println("\texc #" + j + " " + evec[j]);
+         }
+         System.out.println("\t-----");
+      }
+	return ctorlist;
+   }
+
+   public Object[] printFields(){
+      Field fieldlist[] = c.getDeclaredFields();
+      for (int i = 0; i < fieldlist.length; i++) {
+         Field fld = fieldlist[i];
+         System.out.println("\tname = " + fld.getName());
+         System.out.println("\tdecl class = " + fld.getDeclaringClass());
+         System.out.println("\ttype = " + fld.getType());
+         int mod = fld.getModifiers();
+         System.out.println("\tmodifiers = " + Modifier.toString(mod));
+         System.out.println("-----");
+      }
+	return fieldlist;
+   }
+   
+   public Object[] printMethods(){
+      Method methlist[] = c.getDeclaredMethods();
+      System.out.println("--------------" + methlist.length + " Methods --------------");
+      for (int i = 0; i < methlist.length;i++) {
+      	Method m = methlist[i];
+      	System.out.println("\tname = " + m.getName());
+      	System.out.println("\tdecl class = " + m.getDeclaringClass());
+      	@SuppressWarnings("rawtypes")
+		Class pvec[] = m.getParameterTypes();
+      	for (int j = 0; j < pvec.length; j++){
+         		System.out.println("\tparam #" + j + " " + pvec[j]);
+    	}
+      	@SuppressWarnings("rawtypes")
+		Class evec[] = m.getExceptionTypes();
+      	for (int j = 0; j < evec.length; j++){
+         		System.out.println("\texc #" + j + " " + evec[j]);
+      	}
+      	System.out.println("\treturn type = " + m.getReturnType());
+      	System.out.println("\t-----");
+      }
+	return methlist;
+   }
+   
+   public void createArray(){
+	      try {
+	         @SuppressWarnings("rawtypes")
+			Class cls = Class.forName("java.lang.String");
+	         Object arr = Array.newInstance(cls, 10);
+	         Array.set(arr, 5, "Msc OO");
+	         String s = (String)Array.get(arr, 5);
+	         System.out.println(s);
+	      }catch (Throwable e) {
+	         System.err.println(e);
+	      }
+	   }
+
+
+}

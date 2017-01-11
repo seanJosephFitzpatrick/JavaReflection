@@ -1,0 +1,42 @@
+package ie.gmit.sw;
+
+
+public class Measurement {
+
+    private String className;
+    private String Interface;
+    private String Constructors;
+    private String Fields;
+    private String methods;
+    
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getInterface() {
+		return Interface;
+	}
+	public void setInterface(String interface1) {
+		Interface = interface1;
+	}
+	public String getConstructors() {
+		return Constructors;
+	}
+	public void setConstructors(String constructors) {
+		Constructors = constructors;
+	}
+	public String getFields() {
+		return Fields;
+	}
+	public void setFields(String fields) {
+		Fields = fields;
+	}
+	public String getMethods() {
+		return methods;
+	}
+	public void setMethods(String methods) {
+		this.methods = methods;
+	}
+}

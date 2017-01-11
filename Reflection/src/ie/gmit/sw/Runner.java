@@ -1,12 +1,15 @@
 package ie.gmit.sw;
 
 import java.io.*;
-import java.util.*;
 
+/**
+ * @author Sean Fitzpatrick
+ *
+ */
 public class Runner {
 	
-	public static void main(String[] args) throws IOException {
-			
+	
+	public static void main(String[] args) throws IOException {	
 		//swing-sample runner
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

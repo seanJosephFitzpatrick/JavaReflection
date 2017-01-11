@@ -1,0 +1,43 @@
+package ie.gmit.sw;
+
+
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * 
+ *   This class contains a LinkedList of type Class. The LinkedList methods are delegated.  
+ * 
+ */
+public class ClassList
+{
+	
+	List<Class<?>> list = new LinkedList<Class<?>>();
+	
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
+	
+	public boolean add(Class<?> e) 
+	{
+		return list.add(e);
+	}
+
+	public int size()
+	{
+		return list.size();
+	}
+
+	
+	public boolean contains(Object arg0) {
+
+		return list.contains(arg0);
+	}
+
+	public Class<?> get(int index)
+	{
+		return list.get(index);
+	}
+	
+}
