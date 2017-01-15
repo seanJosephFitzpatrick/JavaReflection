@@ -2,6 +2,8 @@ package ie.gmit.sw;
 
 import java.io.*;
 
+import ie.gmit.sw.View.AppWindow;
+
 /**
  * @author Sean Fitzpatrick
  */

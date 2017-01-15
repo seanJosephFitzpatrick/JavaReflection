@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package ie.gmit.sw.View;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.TableColumn;
+
+import ie.gmit.sw.Controller.Reflection;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;

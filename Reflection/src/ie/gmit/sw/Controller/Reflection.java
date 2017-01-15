@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package ie.gmit.sw.Controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import ie.gmit.sw.Model.JarLoader;
 
 public class Reflection implements Mappable, Measurable {
 	
