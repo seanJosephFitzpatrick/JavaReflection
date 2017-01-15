@@ -26,7 +26,7 @@ public class JarLoader {
 		URL[] url = { new URL("jar:file:" + jarName +"!/") };
 		URLClassLoader ucl = URLClassLoader.newInstance(url);
 		
-		//Create JarInputStream for .jar file
+		//Create JarInputStream for jar file
 		JarInputStream in = new JarInputStream(new FileInputStream(jarName));
 		JarEntry next = in.getNextJarEntry();//Assign JarEntry to next
 		
