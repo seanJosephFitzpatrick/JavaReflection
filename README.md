@@ -50,4 +50,4 @@ Launch the command Line and navigate to the src folder inside the project folder
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT](https://github.com/seanJosephFitzpatrick/JavaReflection/blob/master/LICENSE) License
