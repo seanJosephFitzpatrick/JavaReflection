@@ -28,6 +28,8 @@ Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclips
 
 ## Deployment
 
+There are two methods of deployment **Eclipse IDE  or CMD line**. The command line method is faster because you only need to install java.
+
 * **Eclipse**          
 Launch Eclipse and set the workspace as the root folder that was extracted from the GitHub project. Select the folder using the Eclipse popup window browse button. Create a new project File tab --> New --> Project --> Java Project and name it **Reflection**. This is the name of the folder containing the project, Eclipse will pull in the files into the created project. Run the project by selecting the Run tab --> Run.
 
