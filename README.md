@@ -40,11 +40,11 @@ Launch the command Line and navigate to the src folder inside the project folder
 ## Built With
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - JDK
-* [Eclipse Neon](http://www.eclipse.org/neon/)  - Eclipse
+* [Eclipse Neon](http://www.eclipse.org/neon/)  - Eclipse Java EE IDE for Web Developers. Version: Neon.1a Release (4.6.1)
 
 ## Authors
 
-* **Sean Fitzpatrick**
+[Sean Fitzpatrick](https://github.com/seanJosephFitzpatrick)
 
 ## License
 

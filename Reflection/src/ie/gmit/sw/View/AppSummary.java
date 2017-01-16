@@ -2,7 +2,7 @@ package ie.gmit.sw.View;
 
 import javax.swing.*;
 
-public class TableController extends JTable{
+public class AppSummary extends JTable{
 	private static final long serialVersionUID = 777L;	
 	private TypeSummaryTableModel typeSummaryTableModel;
 	@SuppressWarnings("unused")
@@ -13,7 +13,7 @@ public class TableController extends JTable{
 	/**
 	 * TableController Constructor
 	 */
-	public TableController(){
+	public AppSummary(){
 		createTable();
 	}
 	

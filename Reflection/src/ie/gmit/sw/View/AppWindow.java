@@ -27,7 +27,7 @@ import java.awt.Insets;
 public class AppWindow {
 	private JFrame frame;
 	private String name;
-	private TableController tableController;
+	private AppSummary tableController;
 	private JTable table = new JTable();
 	private JScrollPane tableScroller = new JScrollPane();
 	private Reflection reflection;
@@ -122,7 +122,7 @@ public class AppWindow {
 				if(name.endsWith(".jar")){
 					try {
 						reflection = new Reflection(name);
-						tableController = new TableController();
+						tableController = new AppSummary();
 						TypeSummaryTableModel typeSummaryTableModel = tableController.getTableModel();
 
 						
