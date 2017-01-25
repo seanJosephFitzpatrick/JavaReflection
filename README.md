@@ -11,7 +11,7 @@ Efferent Couplings (Ce): The number of classes in other packages that the classe
 
 ## Getting Started
 
-Download and extract the zip folder here [JavaReflection](https://github.com/seanJosephFitzpatrick/JavaReflection)            
+Download and extract the zip folder here [JavaReflection](https://github.com/seanJosephFitzpatrick/JavaReflection/archive/master.zip)            
 
 ### Prerequisites
 
