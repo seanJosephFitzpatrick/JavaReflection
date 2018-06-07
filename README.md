@@ -9,9 +9,8 @@ Afferent Couplings (Ca): The number of classes in other packages that depend upo
 
 Efferent Couplings (Ce): The number of classes in other packages that the classes in the package depend upon is an indicator of the package's dependence on externalities. Efferent = outgoing.       
 
-<p align="center">
-  ![image](https://user-images.githubusercontent.com/9217947/41124981-d7475e8a-6aa3-11e8-9cf6-512318299805.PNG)
-</p>
+
+![image](https://user-images.githubusercontent.com/9217947/41124981-d7475e8a-6aa3-11e8-9cf6-512318299805.PNG)
 
 ## Getting Started
 
