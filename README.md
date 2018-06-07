@@ -7,7 +7,9 @@ classes in its object graph.
 
 Afferent Couplings (Ca): The number of classes in other packages that depend upon classes within the package is an indicator of the package's responsibility. Afferent = incoming.                       
 
-Efferent Couplings (Ce): The number of classes in other packages that the classes in the package depend upon is an indicator of the package's dependence on externalities. Efferent = outgoing.                                        
+Efferent Couplings (Ce): The number of classes in other packages that the classes in the package depend upon is an indicator of the package's dependence on externalities. Efferent = outgoing.       
+
+![image](https://user-images.githubusercontent.com/9217947/41124981-d7475e8a-6aa3-11e8-9cf6-512318299805.PNG)
 
 ## Getting Started
 
