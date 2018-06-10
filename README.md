@@ -9,7 +9,7 @@ Afferent Couplings (Ca): measures how many classes depend on a given class. Clas
 Efferent Couplings (Ce): measures the number of classes on which a given class depends. Classes with high efferent coupling will receive the effects of changes or defects in other classes.   
 
 Languages, Technologies and Implementation Architecture used for this project:
-Java, Java Reflection, Java Swing, Eclipse.
+* Java, Java Reflection, Java Swing, Eclipse.
 
 ## Getting Started
 
