@@ -5,9 +5,9 @@ Application Archive (JAR) and calculates the positional stability of each of the
 classes in its object graph.     
 [The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/) - The Java Tutorials      
 
-Afferent Couplings (Ca): The number of classes in other packages that depend upon classes within the package is an indicator of the package's responsibility. Afferent = incoming.                       
+Afferent Couplings (Ca): measures how many classes depend on a given class. Classes with high afferent will affect other classes when changes are made.                                
 
-Efferent Couplings (Ce): The number of classes in other packages that the classes in the package depend upon is an indicator of the package's dependence on externalities. Efferent = outgoing.       
+Efferent Couplings (Ce): measures the number of classes on which a given class depends. Classes with high efferent coupling will receive the effects of changes or defects in other classes.      
 
 
 ![image](https://user-images.githubusercontent.com/9217947/41124981-d7475e8a-6aa3-11e8-9cf6-512318299805.PNG)
