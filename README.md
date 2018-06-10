@@ -1,16 +1,15 @@
 # Java Reflection
-        
-A Java application that uses reflection to analyse an arbitrary Java
-Application Archive (JAR) and calculates the positional stability of each of the component
-classes in its object graph.     
-[The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/) - The Java Tutorials      
-
-Afferent Couplings (Ca): measures how many classes depend on a given class. Classes with high afferent will affect other classes when changes are made.                                
-
-Efferent Couplings (Ce): measures the number of classes on which a given class depends. Classes with high efferent coupling will receive the effects of changes or defects in other classes.      
-
-
+       
 ![image](https://user-images.githubusercontent.com/9217947/41124981-d7475e8a-6aa3-11e8-9cf6-512318299805.PNG)
+
+4th year Software Development project. The project is a Java application that uses reflection to analyse an arbitrary Java Application Archive (JAR). Java Reflection is an API that can inspect classes, interfaces, fields and methods at run-time. In this project the Java Reflection API is used to calculate the positional stability of each of the component classes in its object graph (Afferent/Efferent Couplings).
+
+Afferent Couplings (Ca): measures how many classes depend on a given class. Classes with high afferent coupling will affect other classes when changes are made.                                
+
+Efferent Couplings (Ce): measures the number of classes on which a given class depends. Classes with high efferent coupling will receive the effects of changes or defects in other classes.   
+
+Languages, Technologies and Implementation Architecture used for this project:
+Java, Java Reflection, Java Swing, Eclipse.
 
 ## Getting Started
 
